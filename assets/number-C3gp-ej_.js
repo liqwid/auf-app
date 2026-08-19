@@ -1,0 +1,1 @@
+var{floor:e,abs:t,round:n,min:r,max:i,pow:a,sign:o}=Math,s=(e,t,n)=>e[t]===n?e:[...e.slice(0,t),n,...e.slice(t+1)],c=e=>typeof e==`number`?`${e}px`:e;export{c as n,s as t};

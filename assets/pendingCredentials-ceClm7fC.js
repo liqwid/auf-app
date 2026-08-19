@@ -1,0 +1,1 @@
+var e={current:null},t=t=>{e.current=t},n=()=>e.current,r=()=>{e.current=null};export{n,t as r,r as t};

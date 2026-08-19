@@ -1,0 +1,1 @@
+var e=e=>e.toLocaleString(void 0,{dateStyle:`medium`,timeStyle:`short`}),t=e=>[e.city,e.region,e.country].filter(Boolean).join(`, `);export{t as n,e as t};

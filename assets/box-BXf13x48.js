@@ -1,0 +1,1 @@
+import{p as e}from"./stack-C1ti7Cz8.js";var t=e(`div`);t.displayName=`Box`;export{t};

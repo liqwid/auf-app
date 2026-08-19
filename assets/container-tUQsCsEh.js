@@ -1,0 +1,1 @@
+import{s as e}from"./stack-C1ti7Cz8.js";var{withContext:t,PropsProvider:n}=e({key:`container`}),r=t(`div`);export{r as t};

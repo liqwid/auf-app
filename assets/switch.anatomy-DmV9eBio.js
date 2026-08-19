@@ -1,0 +1,1 @@
+import{t as e}from"./create-anatomy-DcujBZGO.js";var t=e(`select`).parts(`label`,`positioner`,`trigger`,`indicator`,`clearTrigger`,`item`,`itemText`,`itemIndicator`,`itemGroup`,`itemGroupLabel`,`list`,`content`,`root`,`control`,`valueText`),n=t.build(),r=e(`switch`).parts(`root`,`label`,`control`,`thumb`),i=r.build();export{n as i,i as n,t as r,r as t};

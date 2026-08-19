@@ -1,0 +1,1 @@
+import{t as e}from"./create-slot-recipe-context-wBw7_MF1.js";var{withProvider:t,withContext:n,useStyles:r,PropsProvider:i}=e({key:`card`}),a=t(`div`,`root`),o=n(`div`,`body`);n(`div`,`header`),n(`div`,`footer`),n(`h3`,`title`),n(`p`,`description`);export{a as n,o as t};

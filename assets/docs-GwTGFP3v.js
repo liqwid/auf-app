@@ -1,0 +1,75 @@
+import{J as e,Y as t,q as n,s as r,t as i}from"./jsx-runtime-CDiWBWMd.js";import{t as a}from"./lib-Czd2awSN.js";import{A as o,D as s,E as c,F as l,M as u,N as d,O as f,P as p,T as m,j as h,k as g,t as _}from"./config-COezzKtw.js";import{a as v,o as y,t as b}from"./stack-C1ti7Cz8.js";import{n as x,t as S}from"./DocsShell-nq0qHiWw.js";var C=t(e(((e,t)=>{t.exports={area:!0,base:!0,br:!0,col:!0,embed:!0,hr:!0,img:!0,input:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0}}))()),w=/\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;function T(e){var t={type:`tag`,name:``,voidElement:!1,attrs:{},children:[]},n=e.match(/<\/?([^\s]+?)[/\s>]/);if(n&&(t.name=n[1],(C.default[n[1]]||e.charAt(e.length-2)===`/`)&&(t.voidElement=!0),t.name.startsWith(`!--`))){var r=e.indexOf(`-->`);return{type:`comment`,comment:r===-1?``:e.slice(4,r)}}for(var i=new RegExp(w),a=null;(a=i.exec(e))!==null;)if(a[0].trim())if(a[1]){var o=a[1].trim(),s=[o,``];o.indexOf(`=`)>-1&&(s=o.split(`=`)),t.attrs[s[0]]=s[1],i.lastIndex--}else a[2]&&(t.attrs[a[2]]=a[3].trim().substring(1,a[3].length-1));return t}var E=/<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g,D=/^\s*$/,O=Object.create(null);function k(e,t){switch(t.type){case`text`:return e+t.content;case`tag`:return e+=`<`+t.name+(t.attrs?function(e){var t=[];for(var n in e)t.push(n+`="`+e[n]+`"`);return t.length?` `+t.join(` `):``}(t.attrs):``)+(t.voidElement?`/>`:`>`),t.voidElement?e:e+t.children.reduce(k,``)+`</`+t.name+`>`;case`comment`:return e+`<!--`+t.comment+`-->`}}var A={parse:function(e,t){t||={},t.components||=O;var n,r=[],i=[],a=-1,o=!1;if(e.indexOf(`<`)!==0){var s=e.indexOf(`<`);r.push({type:`text`,content:s===-1?e:e.substring(0,s)})}return e.replace(E,function(s,c){if(o){if(s!==`</`+n.name+`>`)return;o=!1}var l,u=s.charAt(1)!==`/`,d=s.startsWith(`<!--`),f=c+s.length,p=e.charAt(f);if(d){var m=T(s);return a<0?(r.push(m),r):((l=i[a]).children.push(m),r)}if(u&&(a++,(n=T(s)).type===`tag`&&t.components[n.name]&&(n.type=`component`,o=!0),n.voidElement||o||!p||p===`<`||n.children.push({type:`text`,content:e.slice(f,e.indexOf(`<`,f))}),a===0&&r.push(n),(l=i[a-1])&&l.children.push(n),i[a]=n),(!u||n.voidElement)&&(a>-1&&(n.voidElement||n.name===s.slice(2,-1))&&(a--,n=a===-1?r:i[a]),!o&&p!==`<`&&p)){l=a===-1?r:i[a].children;var h=e.indexOf(`<`,f),g=e.slice(f,h===-1?void 0:h);D.test(g)&&(g=` `),(h>-1&&a+l.length>=0||g!==` `)&&l.push({type:`text`,content:g})}}),r},stringify:function(e){return e.reduce(function(e,t){return e+k(``,t)},``)}},j=t(n()),M=(e,t)=>{if(!e)return!1;let n=e.props?.children??e.children;return t?n.length>0:!!n},N=e=>{if(!e)return[];let t=e.props?.children??e.children;return e.props?.i18nIsDynamicList?F(t):t},P=e=>Array.isArray(e)&&e.every(j.isValidElement),F=e=>Array.isArray(e)?e:[e],I=(e,t)=>{let n={...t};return n.props={...t.props,...e.props},n},L=e=>{let t={};if(!e)return t;let n=e=>{F(e).forEach(e=>{h(e)||(M(e)?n(N(e)):o(e)&&!(0,j.isValidElement)(e)&&Object.assign(t,e))})};return n(e),t},R=(e,t,n,r)=>{if(!e)return``;let i=``,a=F(e),s=t?.transSupportBasicHtmlNodes?t.transKeepBasicHtmlNodesFor??[]:[];return a.forEach((e,a)=>{if(h(e)){i+=`${e}`;return}if((0,j.isValidElement)(e)){let{props:o,type:c}=e,l=Object.keys(o).length,u=s.indexOf(c)>-1,d=o.children;if(!d&&u&&!l){i+=`<${c}/>`;return}if(!d&&(!u||l)||o.i18nIsDynamicList){i+=`<${a}></${a}>`;return}if(u&&l<=1){let e=h(d)?d:R(d,t,n,r);i+=`<${c}>${e}</${c}>`;return}let f=R(d,t,n,r);i+=`<${a}>${f}</${a}>`;return}if(e===null){u(n,`TRANS_NULL_VALUE`,`Passed in a null value as child`,{i18nKey:r});return}if(o(e)){let{format:t,...a}=e,o=Object.keys(a);if(o.length===1){let e=t?`${o[0]}, ${t}`:o[0];i+=`{{${e}}}`;return}u(n,`TRANS_INVALID_OBJ`,`Invalid child - Object should only have keys {{ value, format }} (format is optional).`,{i18nKey:r,child:e});return}u(n,`TRANS_INVALID_VAR`,`Passed in a variable like {number} - pass variables for interpolation as full objects like {{number}}.`,{i18nKey:r,child:e})}),i},z=(e,t=[],n={})=>{if(!e)return e;let r=Object.keys(n),i=[...t,...r],a=``,o=0;for(;o<e.length;)if(e[o]===`<`){let t=!1,n=e.slice(o).match(/^<\/(\d+|[a-zA-Z][a-zA-Z0-9_-]*)>/);if(n){let e=n[1];(/^\d+$/.test(e)||i.includes(e))&&(t=!0,a+=n[0],o+=n[0].length)}if(!t){let n=e.slice(o).match(/^<(\d+|[a-zA-Z][a-zA-Z0-9_-]*)(\s+[\w-]+(?:=(?:"[^"]*"|'[^']*'|[^\s>]+))?)*\s*(\/)?>/);if(n){let e=n[1];(/^\d+$/.test(e)||i.includes(e))&&(t=!0,a+=n[0],o+=n[0].length)}}t||(a+=`&lt;`,o+=1)}else a+=e[o],o+=1;return a},B=(e,t,n,r,i,a,s)=>{if(n===``)return[];let c=i.transKeepBasicHtmlNodesFor||[],l=n&&new RegExp(c.map(e=>`<${e}`).join(`|`)).test(n);if(!e&&!t&&!l&&!s)return[n];let u=t??{},d=e=>{F(e).forEach(e=>{h(e)||(M(e)?d(N(e)):o(e)&&!(0,j.isValidElement)(e)&&Object.assign(u,e))})};d(e);let p=z(n,c,u),m=A.parse(`<0>${p}</0>`),_={...u,...a},v=(e,t,n)=>{let r=N(e),i=b(r,t.children,n);return P(r)&&i.length===0||e.props?.i18nIsDynamicList?r:i},y=(e,t,n,r,i)=>{e.dummy?(e.children=t,n.push((0,j.cloneElement)(e,{key:r},i?void 0:t))):n.push(...j.Children.map([e],e=>{if(e.type===j.Fragment||e.props?.i18nIsDynamicList!==void 0){let n={key:r};return e&&e.props&&Object.keys(e.props).forEach(t=>{t===`children`||t===`i18nIsDynamicList`||(n[t]=e.props[t])}),(0,j.createElement)(e.type,n,i?null:t)}let n={key:r};return e&&e.props&&Object.keys(e.props).forEach(t=>{t===`ref`||t===`children`||(n[t]=e.props[t])}),(0,j.cloneElement)(e,n,i?null:t)}))},b=(e,n,a)=>{let u=F(e),d=F(n),p={};return d.reduce((e,n,d)=>{let m=n.children?.[0]?.content&&r.services.interpolator.interpolate(n.children[0].content,_,r.language);if(n.type===`tag`){let f=u[parseInt(n.name,10)];!f&&t&&(f=t[n.name]),a.length===1&&!f&&(f=a[0][n.name]),f||={};let x={...n.attrs};s&&Object.keys(x).forEach(e=>{let t=x[e];h(t)&&(x[e]=g(t))});let S=Object.keys(x).length===0?f:I({props:x},f),C=(0,j.isValidElement)(S),w=C&&M(n,!0)&&!n.voidElement,T=l&&o(S)&&S.dummy&&!C,E=o(t)&&Object.hasOwnProperty.call(t,n.name);if(h(S)){let t=r.services.interpolator.interpolate(S,_,r.language);e.push(t)}else if(M(S)||w){let t=v(S,n,a);y(S,t,e,d)}else if(T){let t=b(u,n.children,a);y(S,t,e,d)}else if(Number.isNaN(parseFloat(n.name)))if(E){let t=v(S,n,a);y(S,t,e,d,n.voidElement)}else if(i.transSupportBasicHtmlNodes&&c.indexOf(n.name)>-1)if(n.voidElement)e.push((0,j.createElement)(n.name,{key:`${n.name}-${d}`}));else{let t=p[n.name]||0;p[n.name]=t+1;let r,i=0;for(let e=0;e<u.length;e+=1){let a=u[e];if((0,j.isValidElement)(a)&&a.type===n.name){if(i===t){r=a;break}i+=1}}let o=r?F(N(r)):u,s=b(o,n.children,a);e.push((0,j.createElement)(n.name,{key:`${n.name}-${d}`},s))}else if(n.voidElement)e.push(`<${n.name} />`);else{let t=b(u,n.children,a);e.push(`<${n.name}>${t}</${n.name}>`)}else if(o(S)&&!C){let t=n.children[0]?m:null;t&&e.push(t)}else y(S,m,e,d,n.children.length!==1||!m)}else if(n.type===`text`){let t=i.transWrapTextNodes,a=typeof i.unescape==`function`?i.unescape:f().unescape,o=s?a(r.services.interpolator.interpolate(n.content,_,r.language)):r.services.interpolator.interpolate(n.content,_,r.language);t?e.push((0,j.createElement)(t,{key:`${n.name}-${d}`},o)):e.push(o)}return e},[])};return N(b([{dummy:!0,children:e||[]}],m,F(e||[]))[0])},V=(e,t,n)=>{let r=e.key||t,i=(0,j.cloneElement)(e,{key:r});if(!i.props||!i.props.children||n.indexOf(`${t}/>`)<0&&n.indexOf(`${t} />`)<0)return i;function a(){return(0,j.createElement)(j.Fragment,null,i)}return(0,j.createElement)(a,{key:r})},H=(e,t)=>e.map((e,n)=>V(e,n,t)),U=(e,t)=>{let n={};return Object.keys(e).forEach(r=>{Object.assign(n,{[r]:V(e[r],r,t)})}),n},W=(e,t,n,r)=>e?Array.isArray(e)?H(e,t):o(e)?U(e,t):(d(n,`TRANS_INVALID_COMPONENTS`,`<Trans /> "components" prop expects an object or array`,{i18nKey:r}),null):null,G=e=>!o(e)||Array.isArray(e)?!1:Object.keys(e).reduce((e,t)=>e&&Number.isNaN(Number.parseFloat(t)),!0);function K({children:e,count:t,parent:n,i18nKey:r,context:i,tOptions:a={},values:o,defaults:c,components:u,ns:p,i18n:m,t:g,shouldUnescape:_,...v}){let y=m||s();if(!y)return d(y,`NO_I18NEXT_INSTANCE`,`Trans: You need to pass in an i18next instance using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.`,{i18nKey:r}),e;let b=g||y.t.bind(y)||(e=>e),x={...f(),...y.options?.react},S=p||b.ns||y.options?.defaultNS;S=h(S)?[S]:S||[`translation`];let{transDefaultProps:C}=x,w=C?.tOptions?{...C.tOptions,...a}:a,T=_??C?.shouldUnescape,E=C?.values?{...C.values,...o}:o,D=C?.components?{...C.components,...u}:u,O=R(e,x,y,r),k=c||w?.defaultValue||O||x.transEmptyNodeValue||(typeof r==`function`?l(r):r),{hashTransKey:A}=x,M=r||(A?A(O||k):O||k);o=y.options?.interpolation?.defaultVariables?E&&Object.keys(E).length>0?{...E,...y.options.interpolation.defaultVariables}:{...y.options.interpolation.defaultVariables}:E;let N=L(e);N&&typeof N.count==`number`&&t===void 0&&(t=N.count);let P=o||t!==void 0&&!y.options?.interpolation?.alwaysFormat||!e?w.interpolation:{interpolation:{...w.interpolation,prefix:`#$?`,suffix:`?$#`}},F={...w,context:i||w.context,count:t,...o,...P,defaultValue:k,ns:S},I=M?b(M,F):k;I===M&&k&&(I=k);let z=W(D,I,y,r),V=z||e,H=null;G(z)&&(H=z,V=e);let U=B(V,H,I,y,x,F,T),K=n??x.defaultTransParent;return K?(0,j.createElement)(K,v,U):U}function q({children:e,count:t,parent:n,i18nKey:r,context:i,tOptions:a={},values:o,defaults:l,components:u,ns:d,i18n:f,t:p,shouldUnescape:m,...h}){let{i18n:g,defaultNS:_}=(0,j.useContext)(c)||{},v=f||g||s(),y=p||v?.t.bind(v);return K({children:e,count:t,parent:n,i18nKey:r,context:i,tOptions:a,values:o,defaults:l,components:u,ns:d||y?.ns||_||v?.options?.defaultNS,i18n:v,t:p,shouldUnescape:m,...h})}var J=`curl -X POST ${_}/pools \\
+  -H "Authorization: Bearer aufk_your_api_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{"name": "my-app-users"}'
+
+# → { "poolId": "…", "issuer": "${_}/pools/…" }`,Y=`curl -X POST ${_}/admin/pools/your-pool-id/clients \\
+  -H "Authorization: Bearer aufk_your_api_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{"name": "my-app-web", "clientType": "public"}'
+
+# → { "client": { "id": "…", "clientType": "public", … }, "clientSecret": null }`,ee=`const AUTH_URL = "${_}";
+const CLIENT_ID = "your-client-id";
+
+export async function signUp(email: string, password: string) {
+  const response = await fetch(\`\${AUTH_URL}/clients/\${CLIENT_ID}/signup\`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  if (!response.ok) throw new Error(\`Sign-up failed: \${response.status}\`);
+  return response.json(); // { userId }
+}
+
+export async function logIn(email: string, password: string) {
+  const response = await fetch(\`\${AUTH_URL}/clients/\${CLIENT_ID}/login\`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ grantType: "password", email, password }),
+  });
+  if (!response.ok) throw new Error(\`Login failed: \${response.status}\`);
+  // A full token set — or, when the user has 2FA enabled, a challenge
+  // response ({ challenges: ["mfa"], accessToken, … }) to complete via
+  // POST /clients/:clientId/challenges/mfa.
+  return response.json();
+}`,te=`export async function refresh(refreshToken: string) {
+  const response = await fetch(\`\${AUTH_URL}/clients/\${CLIENT_ID}/refresh\`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refreshToken }),
+  });
+  if (!response.ok) throw new Error(\`Refresh failed: \${response.status}\`);
+  // Refresh tokens rotate: store the new refreshToken from the response.
+  return response.json();
+}
+
+export async function logOut(refreshToken: string) {
+  await fetch(\`\${AUTH_URL}/clients/\${CLIENT_ID}/logout\`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refreshToken }),
+  });
+}`,ne=`import { createRemoteJWKSet, jwtVerify } from "jose";
+
+const AUTH_URL = "${_}";
+const POOL_ID = "your-pool-id";
+
+const jwks = createRemoteJWKSet(
+  new URL(\`\${AUTH_URL}/pools/\${POOL_ID}/.well-known/jwks.json\`),
+);
+
+/** Verify an access token on your backend; \`payload.sub\` is the user id. */
+export async function verifyAccessToken(token: string) {
+  const { payload } = await jwtVerify(token, jwks, {
+    issuer: \`\${AUTH_URL}/pools/\${POOL_ID}\`,
+    algorithms: ["RS256"],
+  });
+  return payload;
+}`,re=`curl -X POST ${_}/pools/your-pool-id/hooks \\
+  -H "Authorization: Bearer aufk_your_api_key" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "trigger": "pre_token_generation",
+    "url": "https://your-app.example.com/hooks/auf",
+    "secret": "a-shared-secret"
+  }'`,X=i(),Z=({to:e,children:t})=>(0,X.jsx)(a,{to:e,style:{textDecoration:`underline`},children:t}),Q=({title:e,children:t})=>(0,X.jsxs)(b,{gap:3,children:[(0,X.jsx)(y,{size:`lg`,children:e}),t]}),$=({children:e})=>(0,X.jsx)(v,{color:`gray.700`,children:e}),ie=()=>{let{t:e}=m();return(0,X.jsx)(S,{children:(0,X.jsxs)(b,{gap:10,children:[(0,X.jsxs)(b,{gap:2,children:[(0,X.jsx)(y,{size:`xl`,children:e(`docs.quickstart.heading`)}),(0,X.jsx)(v,{color:`gray.600`,children:e(`docs.quickstart.subtitle`)})]}),(0,X.jsxs)(Q,{title:e(`docs.quickstart.step_account_title`),children:[(0,X.jsx)($,{children:(0,X.jsx)(q,{i18nKey:`docs.quickstart.step_account_body`,components:{signupLink:(0,X.jsx)(Z,{to:`/signup`}),apiKeysLink:(0,X.jsx)(Z,{to:`/api-keys`})}})}),(0,X.jsx)($,{children:e(`docs.quickstart.step_account_secret_note`)})]}),(0,X.jsxs)(Q,{title:e(`docs.quickstart.step_pool_title`),children:[(0,X.jsx)($,{children:e(`docs.quickstart.step_pool_body`)}),(0,X.jsx)(x,{code:J,language:`bash`}),(0,X.jsx)($,{children:e(`docs.quickstart.step_pool_after`)})]}),(0,X.jsxs)(Q,{title:e(`docs.quickstart.step_client_title`),children:[(0,X.jsx)($,{children:e(`docs.quickstart.step_client_body`)}),(0,X.jsx)(x,{code:Y,language:`bash`}),(0,X.jsx)($,{children:e(`docs.quickstart.step_client_after`)})]}),(0,X.jsxs)(Q,{title:e(`docs.quickstart.step_integrate_title`),children:[(0,X.jsx)($,{children:e(`docs.quickstart.step_integrate_body`)}),(0,X.jsx)(x,{code:ee,language:`ts`}),(0,X.jsx)($,{children:e(`docs.quickstart.step_integrate_refresh`)}),(0,X.jsx)(x,{code:te,language:`ts`})]}),(0,X.jsxs)(Q,{title:e(`docs.quickstart.step_verify_title`),children:[(0,X.jsx)($,{children:e(`docs.quickstart.step_verify_body`)}),(0,X.jsx)(x,{code:ne,language:`ts`})]}),(0,X.jsxs)(Q,{title:e(`docs.quickstart.step_hooks_title`),children:[(0,X.jsx)($,{children:e(`docs.quickstart.step_hooks_body`)}),(0,X.jsx)(x,{code:re,language:`bash`}),(0,X.jsx)($,{children:e(`docs.quickstart.step_hooks_signature`)})]}),(0,X.jsx)(Q,{title:e(`docs.quickstart.step_reference_title`),children:(0,X.jsx)($,{children:(0,X.jsx)(q,{i18nKey:`docs.quickstart.step_reference_body`,components:{referenceLink:(0,X.jsx)(Z,{to:`/docs/api`})}})})})]})})};function ae(){return[{title:p.t(`docs.quickstart.title`)}]}var oe=r(function(){return(0,X.jsx)(ie,{})});export{oe as default,ae as meta};

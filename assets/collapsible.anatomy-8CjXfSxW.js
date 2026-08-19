@@ -1,0 +1,1 @@
+import{t as e}from"./create-anatomy-DcujBZGO.js";var t=e(`collapsible`).parts(`root`,`trigger`,`content`,`indicator`),n=t.build();export{n,t};

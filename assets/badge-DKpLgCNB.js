@@ -1,0 +1,1 @@
+import{s as e}from"./stack-C1ti7Cz8.js";var{PropsProvider:t,withContext:n}=e({key:`badge`}),r=n(`span`);export{r as t};

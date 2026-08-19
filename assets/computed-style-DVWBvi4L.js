@@ -1,0 +1,1 @@
+import{d as e}from"./use-field-context-B_SKn0VJ.js";var t=new WeakMap;function n(n){return t.has(n)||t.set(n,e(n).getComputedStyle(n)),t.get(n)}export{n as t};

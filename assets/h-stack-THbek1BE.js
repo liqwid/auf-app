@@ -1,0 +1,1 @@
+import{Y as e,q as t,t as n}from"./jsx-runtime-CDiWBWMd.js";import{t as r}from"./stack-C1ti7Cz8.js";var i=n(),a=(0,e(t(),1).forwardRef)(function(e,t){return(0,i.jsx)(r,{align:`center`,...e,direction:`row`,ref:t})});a.displayName=`HStack`;export{a as t};

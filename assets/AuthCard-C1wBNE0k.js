@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CDiWBWMd.js";import{t}from"./box-BXf13x48.js";import{t as n}from"./container-tUQsCsEh.js";var r=e(),i=({children:e})=>(0,r.jsx)(n,{maxW:`sm`,py:{base:12,md:20},children:(0,r.jsx)(t,{bg:`white`,rounded:`3xl`,p:{base:6,md:8},borderWidth:`1px`,borderColor:`gray.100`,boxShadow:`0 24px 48px -32px rgba(34, 37, 39, 0.25)`,children:e})});export{i as t};

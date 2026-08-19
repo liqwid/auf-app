@@ -1,0 +1,1 @@
+import{t as e}from"./create-anatomy-DcujBZGO.js";var t=e(`pinInput`).parts(`root`,`label`,`input`,`control`),n=t.build();export{n,t};
